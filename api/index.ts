@@ -69,7 +69,7 @@ const sendEmail = async function (emailBody: string, emailSubject: string) {
    const transporter = await getGmailTransporter();
    const emailTemplate = emailTemplateFn(emailBody);
    await transporter.sendMail({
-      from: process.env.GOOGLE_APP_EMAIL,
+      from: "ScaleJet <no-reply@scale-jet.com>",
       to: process.env.GOOGLE_EMAIL_TO,
       subject: emailSubject,
       text: "",
