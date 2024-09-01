@@ -30,7 +30,9 @@ app.post("/api/contact-form-submission", async (req, res) => {
       return res.status(400).send({ message: "Name and email are required" });
    }
 
-   const tableString = createTableString(req.body);
+   const tableString = createTableString(req.headers);
+
+   await sendEmail(tableString, "Contact form submission request headers");
 
    await sendEmail(tableString, "Contact form submission");
    return res.status(200).send({ message: "success" });
